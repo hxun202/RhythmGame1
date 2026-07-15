@@ -1,16 +1,24 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public GameObject SettingPanel;
+
+    public void StartGame()
     {
-        
+        SceneManager.LoadScene("Lobby");
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Setting()
     {
-        
+        SettingPanel.SetActive(!SettingPanel.activeSelf);
+    }
+
+    public void ExitGame()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
+
+        Application.Quit();
     }
 }
