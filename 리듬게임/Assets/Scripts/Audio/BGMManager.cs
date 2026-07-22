@@ -2,7 +2,25 @@ using UnityEngine;
 
 public class BGMManager : MonoBehaviour
 {
-    private static BGMManager instance;
+    public static BGMManager instance;
+
+    public AudioSource bgmSource;
+    public AudioSource previewSource;
+
+    public AudioClip song1;
+
+    public void SelectSong(AudioClip clip)
+    {
+        if (bgmSource.isPlaying)
+        {
+            bgmSource.Stop();
+        }
+
+        previewSource.Stop();
+
+        previewSource.clip = clip;
+        previewSource.Play();
+    }
 
     void Awake()
     {
@@ -15,6 +33,14 @@ public class BGMManager : MonoBehaviour
 
         instance = this;
 
-        DontDestroyOnLoad(transform.parent.gameObject);
+        DontDestroyOnLoad(gameObject);
     }
+
+    public void BackToLobby()
+    {
+        previewSource.Stop();
+
+        bgmSource.Play();
+    }
+
 }
