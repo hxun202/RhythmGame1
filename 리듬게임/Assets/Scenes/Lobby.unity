@@ -10389,7 +10389,7 @@ GameObject:
   - component: {fileID: 785149512893186243}
   - component: {fileID: 785149512893186108}
   m_Layer: 5
-  m_Name: HorizontalBlackButton
+  m_Name: Select Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10757,7 +10757,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: START
+  m_Text: SELECT
 --- !u!222 &3704396648199056637
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -10952,7 +10952,7 @@ GameObject:
   - component: {fileID: 3923143685978453817}
   - component: {fileID: 2742879105854065799}
   m_Layer: 5
-  m_Name: SmallBlackHomeButton
+  m_Name: Home Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11016,7 +11016,7 @@ GameObject:
   - component: {fileID: 465999366065433411}
   - component: {fileID: 1591718532568649981}
   m_Layer: 5
-  m_Name: SmallBlackSoundButton
+  m_Name: Sound Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

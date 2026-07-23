@@ -20,6 +20,11 @@ public class LobbyManager : MonoBehaviour
         SceneManager.LoadScene("MainMenu");
     }
 
+    public void Return()
+    {
+        SceneManager.LoadScene("Lobby");
+    }
+
     public void SelectSong(SongData song)
     {
         SongManager.instance.selectedSong = song;
