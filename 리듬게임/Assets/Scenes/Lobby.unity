@@ -3914,6 +3914,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 875071904}
   m_CullTransparentMesh: 1
+--- !u!1 &898093423
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 898093424}
+  - component: {fileID: 898093425}
+  m_Layer: 0
+  m_Name: SongData
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &898093424
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898093423}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 808.8882, y: 546.46375, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &898093425
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 898093423}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54feca92daafcad4aac2f3061e4d0dff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LobbyMenu
+  SettingPanel: {fileID: 2050950267}
 --- !u!1 &898194592
 GameObject:
   m_ObjectHideFlags: 0
@@ -6387,7 +6432,7 @@ AudioSource:
   m_GameObject: {fileID: 1383548028}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 8546493762112701156, guid: fd398e68c3d501c4bad919bf94acb583, type: 2}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: aec03dc4fe589614ba290d82fb36b705, type: 3}
   m_PlayOnAwake: 0
@@ -9931,17 +9976,17 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068203919}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d0c6c16239a60db46b0c34b33dc77765, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SongData
   songName: Adventure
   composer: BlackBox
-  easyLevel: 
-  normalLevel: 
-  hardLevel: 
-  masterLevel: 
+  easyLevel: 4
+  normalLevel: 7
+  hardLevel: 9
+  masterLevel: 16
   clip: {fileID: 8300000, guid: 5609c0c05078f8f428bb76cb0d10bfdc, type: 3}
   image: {fileID: 5595235921502853734, guid: 19594f3f75d6cb54eae6448cbc5379a9, type: 3}
   songList: {fileID: 1073441265}
@@ -9989,13 +10034,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11400000, guid: 752d5c0254d8e594594429de5ca1367b, type: 2}
-        m_TargetAssemblyTypeName: MusicData, Assembly-CSharp
-        m_MethodName: set_name
-        m_Mode: 5
+      - m_Target: {fileID: 898093425}
+        m_TargetAssemblyTypeName: LobbyMenu, Assembly-CSharp
+        m_MethodName: SelectSong
+        m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_ObjectArgument: {fileID: 2068203922}
+          m_ObjectArgumentAssemblyTypeName: SongData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Adventuree
@@ -10013,6 +10058,52 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!1 &2113987501
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2113987503}
+  - component: {fileID: 2113987502}
+  m_Layer: 0
+  m_Name: SongManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2113987502
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113987501}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c108928fb8fc14148aaacece733d28f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SongManager
+  selectedSong: {fileID: 2068203922}
+  selectedDifficulty: 0
+--- !u!4 &2113987503
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2113987501}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 808.8882, y: 546.46375, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2121452058
 GameObject:
   m_ObjectHideFlags: 0
@@ -10923,7 +11014,6 @@ GameObject:
   - component: {fileID: 4303034901789851540}
   - component: {fileID: 7366910010293774954}
   - component: {fileID: 7366910010293774955}
-  - component: {fileID: 7366910010293774956}
   m_Layer: 5
   m_Name: Song 1
   m_TagString: Untagged
@@ -11116,6 +11206,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 898093425}
+        m_TargetAssemblyTypeName: LobbyMenu, Assembly-CSharp
+        m_MethodName: SelectSong
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 7366910010293774955}
+          m_ObjectArgumentAssemblyTypeName: SongData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7366910010293774955
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11137,19 +11239,6 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: aec03dc4fe589614ba290d82fb36b705, type: 3}
   image: {fileID: 21300000, guid: 4ae052bcae4654a49b4b1c70a8a405f9, type: 3}
   songList: {fileID: 1073441265}
---- !u!114 &7366910010293774956
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258884843982907108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c108928fb8fc14148aaacece733d28f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SongManager
-  selectedSong: {fileID: 7366910010293774955}
 --- !u!114 &7587600111838520107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11311,3 +11400,5 @@ SceneRoots:
   - {fileID: 1073441264}
   - {fileID: 1820035911}
   - {fileID: 1361035097}
+  - {fileID: 898093424}
+  - {fileID: 2113987503}

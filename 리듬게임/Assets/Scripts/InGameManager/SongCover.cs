@@ -46,7 +46,7 @@ public class SongCover : MonoBehaviour
                 break;
         }               
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(2.5f);
 
         coverPanel.SetActive(false);
 

@@ -1,10 +1,10 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class LobbyManager : MonoBehaviour
+public class LobbyMenu : MonoBehaviour
 {
     public GameObject SettingPanel;
-  
+
     public void StartMusic()
     {
         SceneManager.LoadScene("LevelSelect");
@@ -25,6 +25,11 @@ public class LobbyManager : MonoBehaviour
         SceneManager.LoadScene("Lobby");
     }
 
+    public void StartSong()
+    {
+        SceneManager.LoadScene("InGame");
+    }
+    
     public void SelectSong(SongData song)
     {
         SongManager.instance.selectedSong = song;
