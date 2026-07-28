@@ -16,9 +16,11 @@ public class SongManager : MonoBehaviour
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
+            Debug.Log("»ý¼º");
         }
         else
         {
+            Debug.Log("ÆÄ±«");
             Destroy(gameObject);
         }
     }

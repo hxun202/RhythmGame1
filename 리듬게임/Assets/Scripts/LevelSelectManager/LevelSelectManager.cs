@@ -62,6 +62,7 @@ public class LevelSelectManager : MonoBehaviour
     void Start()
     {
         SongData song = SongManager.instance.selectedSong;
+        Debug.Log("LevelSelect : " + song.songName);
 
         easyLevelText.text = song.easyLevel.ToString();
         normalLevelText.text = song.normalLevel.ToString();

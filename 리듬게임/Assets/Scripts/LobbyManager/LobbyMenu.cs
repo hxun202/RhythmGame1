@@ -33,5 +33,6 @@ public class LobbyMenu : MonoBehaviour
     public void SelectSong(SongData song)
     {
         SongManager.instance.selectedSong = song;
+        Debug.Log("SelectSong : " + song.songName);
     }
 }

@@ -24,7 +24,7 @@ public class SongList : MonoBehaviour
 
         audioSource.clip = song.clip;
 
-        audioSource.Play();
+        audioSource.Play(); 
 
         albumImage.sprite = song.image;
         songNameText.text = song.songName;

@@ -15,10 +15,6 @@ public class SongCover : MonoBehaviour
 
     public AudioSource music;
 
-    public AudioClip coverClip;
-
-    public Difficulty difficulty;
-
     IEnumerator Start()
     {
         SongData song = SongManager.instance.selectedSong;
@@ -27,7 +23,7 @@ public class SongCover : MonoBehaviour
 
         songName.text = song.songName;
 
-        switch (difficulty)
+        switch (SongManager.instance.selectedDifficulty)
         {
             case Difficulty.Easy:
                 level.text = "Easy " + song.easyLevel;
@@ -44,13 +40,17 @@ public class SongCover : MonoBehaviour
             case Difficulty.Master:
                 level.text = "Master " + song.masterLevel;
                 break;
-        }               
+        }
 
         yield return new WaitForSeconds(2.5f);
 
         coverPanel.SetActive(false);
 
+        music.Stop();
+
         music.clip = song.clip;
+
+        music.time = 0f;
 
         music.Play();
 
