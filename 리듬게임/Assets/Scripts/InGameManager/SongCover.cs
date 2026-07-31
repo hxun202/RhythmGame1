@@ -9,6 +9,8 @@ public class SongCover : MonoBehaviour
 
     public Image coverImage;
 
+    public Image backgroundImage;
+
     public TMP_Text songName;
 
     public TMP_Text level;
@@ -17,9 +19,13 @@ public class SongCover : MonoBehaviour
 
     IEnumerator Start()
     {
-        SongData song = SongManager.instance.selectedSong;
+        MusicData song = SongManager.instance.selectedSong;
+
+        Debug.Log("selectedSong : " + SongManager.instance.selectedSong);
 
         coverImage.sprite = song.image;
+
+        backgroundImage.sprite = song.image;
 
         songName.text = song.songName;
 

@@ -883,7 +883,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6320754, g: 0.6320754, b: 0.6320754, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1708,7 +1708,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SongCover
   coverPanel: {fileID: 2086428241}
-  coverImage: {fileID: 1409277383}
+  coverImage: {fileID: 628380397}
+  backgroundImage: {fileID: 1409277383}
   songName: {fileID: 2049794908}
   level: {fileID: 1182000790}
   music: {fileID: 1420944043}

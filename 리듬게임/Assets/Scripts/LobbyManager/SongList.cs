@@ -7,7 +7,7 @@ public class SongList : MonoBehaviour
 
     public AudioSource audioSource;
 
-    public SongData[] songs;
+    public MusicData[] songs;
 
     public Image albumImage;
 
@@ -16,8 +16,10 @@ public class SongList : MonoBehaviour
 
     public GameObject songDetailsPanel;
 
-    public void ShowSong(SongData song)
+    public void ShowSong(MusicData song)
     {
+        SongManager.instance.selectedSong = song;
+
         songDetailsPanel.SetActive(true);
 
         audioSource.Stop();

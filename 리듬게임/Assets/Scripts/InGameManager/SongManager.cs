@@ -5,10 +5,10 @@ public class SongManager : MonoBehaviour
 {
     public static SongManager instance;
 
-    public SongData selectedSong;
+    public MusicData selectedSong;
     public Difficulty selectedDifficulty;
 
-    public Dictionary<SongData, SongRecord> records = new Dictionary<SongData, SongRecord>();
+    public Dictionary<MusicData, SongRecord> records = new Dictionary<MusicData, SongRecord>();
 
     void Awake()
     {
@@ -25,7 +25,7 @@ public class SongManager : MonoBehaviour
         }
     }
 
-    public SongRecord GetRecord(SongData song)
+    public SongRecord GetRecord(MusicData song)
     {
         if (!records.ContainsKey(song))
         {

@@ -27,7 +27,7 @@ public class LevelSelectManager : MonoBehaviour
 
     public void RefreshUI()
     {
-        SongData song = SongManager.instance.selectedSong;
+        MusicData song = SongManager.instance.selectedSong;
 
         SongRecord record = SongManager.instance.GetRecord(song);
 
@@ -61,7 +61,7 @@ public class LevelSelectManager : MonoBehaviour
 
     void Start()
     {
-        SongData song = SongManager.instance.selectedSong;
+        MusicData song = SongManager.instance.selectedSong;
         Debug.Log("LevelSelect : " + song.songName);
 
         easyLevelText.text = song.easyLevel.ToString();

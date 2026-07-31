@@ -1146,7 +1146,7 @@ GameObject:
   m_Component:
   - component: {fileID: 740543985}
   m_Layer: 5
-  m_Name: Audio
+  m_Name: Main Audio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1754,7 +1754,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::BGMManager
   bgmSource: {fileID: 0}
   previewSource: {fileID: 0}
-  song1: {fileID: 0}
 --- !u!1 &1360077316
 GameObject:
   m_ObjectHideFlags: 0

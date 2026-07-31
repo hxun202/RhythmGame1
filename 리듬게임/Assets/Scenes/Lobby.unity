@@ -2431,25 +2431,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2068203922}
-        m_TargetAssemblyTypeName: SongData, Assembly-CSharp
-        m_MethodName: ClickSong
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1462988420}
-        m_TargetAssemblyTypeName: LobbyMenu, Assembly-CSharp
-        m_MethodName: SelectSong
+      - m_Target: {fileID: 1073441265}
+        m_TargetAssemblyTypeName: SongList, Assembly-CSharp
+        m_MethodName: ShowSong
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 2068203922}
-          m_ObjectArgumentAssemblyTypeName: SongData, Assembly-CSharp
+          m_ObjectArgument: {fileID: 11400000, guid: fbace6f43fb53b34499d723e9eefcb2d, type: 2}
+          m_ObjectArgumentAssemblyTypeName: MusicData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3626,25 +3614,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 898194595}
-        m_TargetAssemblyTypeName: SongData, Assembly-CSharp
-        m_MethodName: ClickSong
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1462988420}
-        m_TargetAssemblyTypeName: LobbyMenu, Assembly-CSharp
-        m_MethodName: SelectSong
+      - m_Target: {fileID: 1073441265}
+        m_TargetAssemblyTypeName: SongList, Assembly-CSharp
+        m_MethodName: ShowSong
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 898194595}
-          m_ObjectArgumentAssemblyTypeName: SongData, Assembly-CSharp
+          m_ObjectArgument: {fileID: 11400000, guid: e20b3955518f1c247a4545635f5a0ed8, type: 2}
+          m_ObjectArgumentAssemblyTypeName: MusicData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -3960,7 +3936,6 @@ GameObject:
   m_Component:
   - component: {fileID: 898194593}
   - component: {fileID: 898194594}
-  - component: {fileID: 898194595}
   m_Layer: 5
   m_Name: Song 4
   m_TagString: Untagged
@@ -4008,27 +3983,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &898194595
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898194592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c6c16239a60db46b0c34b33dc77765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SongData
-  songName: Another World
-  composer: yoshiyuki
-  easyLevel: 5
-  normalLevel: 8
-  hardLevel: 10
-  masterLevel: 19
-  clip: {fileID: 8300000, guid: 05fa31ca76ecfe54caa15099654742c9, type: 3}
-  image: {fileID: -4071037218890596548, guid: edd09266aa411d448b8f2ffc840490e5, type: 3}
-  songList: {fileID: 1073441265}
 --- !u!1 &1025142293
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,7 +4068,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1035851899}
   - component: {fileID: 1035851900}
-  - component: {fileID: 1035851901}
   m_Layer: 5
   m_Name: Song 3
   m_TagString: Untagged
@@ -4162,27 +4115,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &1035851901
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1035851898}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c6c16239a60db46b0c34b33dc77765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SongData
-  songName: Party
-  composer: LensPulse
-  easyLevel: 3
-  normalLevel: 7
-  hardLevel: 9
-  masterLevel: 15
-  clip: {fileID: 8300000, guid: b2f334a41a7729940a0e42b97b545fcd, type: 3}
-  image: {fileID: -2880027493397259658, guid: ebe64eeddbd2c694796767eb16e9cff0, type: 3}
-  songList: {fileID: 1073441265}
 --- !u!1 &1073441262
 GameObject:
   m_ObjectHideFlags: 0
@@ -4229,7 +4161,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SongList
   audioSource: {fileID: 1383548030}
   songs:
-  - {fileID: 7366910010293774955}
+  - {fileID: 11400000, guid: d1be6d81d3db50a4dbfc9ee0fa4a6ba9, type: 2}
+  - {fileID: 11400000, guid: fbace6f43fb53b34499d723e9eefcb2d, type: 2}
+  - {fileID: 11400000, guid: 68d3d753eb6f96d45a68e1529cdf9d5a, type: 2}
+  - {fileID: 11400000, guid: e20b3955518f1c247a4545635f5a0ed8, type: 2}
   albumImage: {fileID: 801672058}
   songNameText: {fileID: 1101246551}
   composerText: {fileID: 765026945}
@@ -4593,25 +4528,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1035851901}
-        m_TargetAssemblyTypeName: SongData, Assembly-CSharp
-        m_MethodName: ClickSong
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1462988420}
-        m_TargetAssemblyTypeName: LobbyMenu, Assembly-CSharp
-        m_MethodName: SelectSong
+      - m_Target: {fileID: 1073441265}
+        m_TargetAssemblyTypeName: SongList, Assembly-CSharp
+        m_MethodName: ShowSong
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 1035851901}
-          m_ObjectArgumentAssemblyTypeName: SongData, Assembly-CSharp
+          m_ObjectArgument: {fileID: 11400000, guid: 68d3d753eb6f96d45a68e1529cdf9d5a, type: 2}
+          m_ObjectArgumentAssemblyTypeName: MusicData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -10024,8 +9947,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2068203920}
   - component: {fileID: 2068203921}
-  - component: {fileID: 2068203923}
-  - component: {fileID: 2068203922}
   m_Layer: 5
   m_Name: Song 2
   m_TagString: Untagged
@@ -10073,95 +9994,6 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
---- !u!114 &2068203922
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068203919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c6c16239a60db46b0c34b33dc77765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SongData
-  songName: Adventure
-  composer: BlackBox
-  easyLevel: 4
-  normalLevel: 7
-  hardLevel: 9
-  masterLevel: 16
-  clip: {fileID: 8300000, guid: 5609c0c05078f8f428bb76cb0d10bfdc, type: 3}
-  image: {fileID: 5595235921502853734, guid: 19594f3f75d6cb54eae6448cbc5379a9, type: 3}
-  songList: {fileID: 1073441265}
---- !u!114 &2068203923
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068203919}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2068203922}
-        m_TargetAssemblyTypeName: SongData, Assembly-CSharp
-        m_MethodName: ClickSong
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1462988420}
-        m_TargetAssemblyTypeName: LobbyMenu, Assembly-CSharp
-        m_MethodName: SelectSong
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 2068203922}
-          m_ObjectArgumentAssemblyTypeName: SongData, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &2113987501
 GameObject:
   m_ObjectHideFlags: 0
@@ -11116,8 +10948,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7366910010293774953}
   - component: {fileID: 4303034901789851540}
-  - component: {fileID: 7366910010293774954}
-  - component: {fileID: 7366910010293774955}
   m_Layer: 5
   m_Name: Song 1
   m_TagString: Untagged
@@ -11254,95 +11084,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &7366910010293774954
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258884843982907108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 0
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7366910010293774955}
-        m_TargetAssemblyTypeName: SongData, Assembly-CSharp
-        m_MethodName: ClickSong
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1462988420}
-        m_TargetAssemblyTypeName: LobbyMenu, Assembly-CSharp
-        m_MethodName: SelectSong
-        m_Mode: 2
-        m_Arguments:
-          m_ObjectArgument: {fileID: 7366910010293774955}
-          m_ObjectArgumentAssemblyTypeName: SongData, Assembly-CSharp
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &7366910010293774955
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5258884843982907108}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d0c6c16239a60db46b0c34b33dc77765, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::SongData
-  songName: Let's Go!!
-  composer: BlackBox
-  easyLevel: 3
-  normalLevel: 5
-  hardLevel: 9
-  masterLevel: 12
-  clip: {fileID: 8300000, guid: aec03dc4fe589614ba290d82fb36b705, type: 3}
-  image: {fileID: 21300000, guid: 4ae052bcae4654a49b4b1c70a8a405f9, type: 3}
-  songList: {fileID: 1073441265}
 --- !u!114 &7587600111838520107
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11462,25 +11203,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7366910010293774955}
-        m_TargetAssemblyTypeName: SongData, Assembly-CSharp
-        m_MethodName: ClickSong
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1462988420}
-        m_TargetAssemblyTypeName: LobbyMenu, Assembly-CSharp
-        m_MethodName: SelectSong
+      - m_Target: {fileID: 1073441265}
+        m_TargetAssemblyTypeName: SongList, Assembly-CSharp
+        m_MethodName: ShowSong
         m_Mode: 2
         m_Arguments:
-          m_ObjectArgument: {fileID: 7366910010293774955}
-          m_ObjectArgumentAssemblyTypeName: SongData, Assembly-CSharp
+          m_ObjectArgument: {fileID: 11400000, guid: d1be6d81d3db50a4dbfc9ee0fa4a6ba9, type: 2}
+          m_ObjectArgumentAssemblyTypeName: MusicData, Assembly-CSharp
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 

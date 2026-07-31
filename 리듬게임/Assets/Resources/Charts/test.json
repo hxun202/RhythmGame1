@@ -1,0 +1,41 @@
+{
+  "songName": "Test",
+  "bpm": 170,
+  "offset": 0,
+  "notes": [
+    { "time": 1.000, "lane": 0, "type": "Tap" },
+    { "time": 1.250, "lane": 1, "type": "Tap" },
+    { "time": 1.500, "lane": 2, "type": "Tap" },
+    { "time": 1.750, "lane": 3, "type": "Tap" },
+    { "time": 2.000, "lane": 4, "type": "Tap" },
+    { "time": 2.250, "lane": 5, "type": "Tap" },
+
+    { "time": 3.000, "lane": 0, "type": "Tap" },
+    { "time": 3.000, "lane": 5, "type": "Tap" },
+
+    { "time": 3.500, "lane": 1, "type": "Tap" },
+    { "time": 3.500, "lane": 4, "type": "Tap" },
+
+    { "time": 4.000, "lane": 2, "type": "Tap" },
+    { "time": 4.000, "lane": 3, "type": "Tap" },
+
+    { "time": 5.000, "lane": 0, "type": "Tap" },
+    { "time": 5.125, "lane": 1, "type": "Tap" },
+    { "time": 5.250, "lane": 2, "type": "Tap" },
+    { "time": 5.375, "lane": 3, "type": "Tap" },
+    { "time": 5.500, "lane": 4, "type": "Tap" },
+    { "time": 5.625, "lane": 5, "type": "Tap" },
+
+    { "time": 6.500, "lane": 2, "type": "Tap" },
+    { "time": 6.500, "lane": 3, "type": "Tap" },
+
+    { "time": 7.000, "lane": 0, "type": "Tap" },
+    { "time": 7.000, "lane": 2, "type": "Tap" },
+    { "time": 7.000, "lane": 5, "type": "Tap" },
+
+    { "time": 8.000, "lane": 1, "type": "Tap" },
+    { "time": 8.250, "lane": 2, "type": "Tap" },
+    { "time": 8.500, "lane": 3, "type": "Tap" },
+    { "time": 8.750, "lane": 4, "type": "Tap" }
+  ]
+}

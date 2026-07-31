@@ -7,8 +7,6 @@ public class BGMManager : MonoBehaviour
     public AudioSource bgmSource;
     public AudioSource previewSource;
 
-    public AudioClip song1;
-
     public void SelectSong(AudioClip clip)
     {
         if (bgmSource.isPlaying)

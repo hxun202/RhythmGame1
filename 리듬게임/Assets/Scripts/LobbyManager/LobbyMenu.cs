@@ -30,7 +30,7 @@ public class LobbyMenu : MonoBehaviour
         SceneManager.LoadScene("InGame");
     }
     
-    public void SelectSong(SongData song)
+    public void SelectSong(MusicData song)
     {
         SongManager.instance.selectedSong = song;
         Debug.Log("SelectSong : " + song.songName);
