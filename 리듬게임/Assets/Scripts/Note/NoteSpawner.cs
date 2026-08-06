@@ -1,84 +1,61 @@
-//using UnityEngine;
-//using System.Collections.Generic;
+using UnityEngine;
 
-//public class NoteSpawner : MonoBehaviour
-//{
-//    [SerializeField] private ChartManager chartManager;
-//    [SerializeField] private MusicManager musicManager;
+public class NoteSpawner : MonoBehaviour
+{
+    [Header("Managers")]
+    [SerializeField] private ChartManager chartManager;
+    [SerializeField] private MusicManager musicManager;
+    [SerializeField] private PoolManager poolManager;
+    [SerializeField] private RectTransform NoteParent;
 
-//    [SerializeField] private GameObject notePrefab;
+    [Header("Lane")]
+    [SerializeField] private RectTransform[] lanes;
 
-//    [SerializeField] private Transform[] lanes;
+    private int currentIndex = 0;
 
-//    [SerializeField]
-//    private float travelTime = 2f;
+    private void Update()
+    {
+        SpawnNote();
+    }
 
-//    private readonly List<BaseNote> activeNotes = new();
+    private void SpawnNote()
+    {
+        if (chartManager.Chart == null)
+            return;
 
-//    private int currentIndex = 0;
+        if (currentIndex >= chartManager.Chart.notes.Count)
+            return;
 
-//    private Vector3 judgePosition;
+        NoteData data = chartManager.Chart.notes[currentIndex];
 
-//    private void Start()
-//    {
-//        judgePosition = new Vector3(0, -300, 0);
-//    }
+        float spawnTime = data.time - 2f;
 
-//    private void Update()
-//    {
-//        SpawnNotes();
+        if (musicManager.CurrentTime >= spawnTime)
+        {
+            CreateNote(data);
 
-//        foreach (var note in activeNotes)
-//        {
-//            note.Move(musicManager.CurrentTime);
-//        }
-//    }
+            currentIndex++;
+        }
+    }
 
-//    private void SpawnNotes()
-//    {
-//        if (currentIndex >= chartManager.Chart.notes.Count)
-//            return;
+    private void CreateNote(NoteData data)
+    {
+        GameObject obj = poolManager.Get(data.type);
 
-//        float currentTime = musicManager.CurrentTime;
+        RectTransform noteRect = obj.GetComponent<RectTransform>();
 
-//        while (currentIndex < chartManager.Chart.notes.Count)
-//        {
-//            var data = chartManager.Chart.notes[currentIndex];
+        noteRect.SetParent(NoteParent, false);   // Áß¿ä
 
-//            if (currentTime >= data.time - travelTime)
-//            {
-//                Spawn(data);
+        noteRect.anchoredPosition = new Vector2(
+            lanes[data.lane].anchoredPosition.x,
+            600f
+        );
 
-//                currentIndex++;
-//            }
-//            else
-//            {
-//                break;
-//            }
-//        }
-//    }
+        BaseNote note = obj.GetComponent<BaseNote>();
 
-//    private void Spawn(NoteData data)
-//    {
-//        GameObject obj =
-//            Instantiate(notePrefab);
-
-//        Vector3 spawn =
-//            lanes[data.lane].position;
-
-//        Vector3 target =
-//            new Vector3(
-//                spawn.x,
-//                judgePosition.y,
-//                0);
-
-//        BaseNote note =
-//            obj.GetComponent<BaseNote>();
-
-//        note.Initialize(
-//            data,
-//            musicManager);
-
-//        activeNotes.Add(note);
-//    }
-//}
+        note.Initialize
+            (data,
+            musicManager,
+            poolManager);
+    }
+}

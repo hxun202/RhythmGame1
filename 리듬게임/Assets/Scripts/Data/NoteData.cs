@@ -17,7 +17,7 @@ public class NoteData
     public int targetLane; // 홀드 노트의 목표 위치 (홀드 노트가 아닌 경우 -1)
 
     [JsonProperty("type")]
-    public string type; // 노트의 타입 (tap, hold, etc.)
+    public NoteType type; // 노트의 타입 (tap, hold, etc.)
 
     [JsonProperty("direction")]
     public string direction; // 노트의 방향 (up)
