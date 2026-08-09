@@ -38,3 +38,11 @@ public enum NoteType
     Slide = 2,
     Flick = 3
 }
+
+public enum JudgeResult
+{
+    Perfect,
+    Great,
+    Good,
+    Miss
+}

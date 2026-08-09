@@ -1,0 +1,21 @@
+{
+    "songName": "holdtest",
+    "notes": [
+        {
+            "time": 3.0,
+            "endTime": 0.0,
+            "lane": 0,
+            "targetLane": -1,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 6.0,
+            "endTime": 8.0,
+            "lane": 2,
+            "targetLane": -1,
+            "type": 1,
+            "direction": ""
+        }
+    ]
+}

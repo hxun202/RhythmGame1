@@ -9,8 +9,6 @@ public class EditorManager : MonoBehaviour
 
     private void Start()
     {
-        chartManager.LoadChart("test");
-
         musicManager.PlayMusic();
     }
 }

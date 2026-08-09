@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0468cbd5b87cf424eb9a3b023760cb0f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TapNote
-  spawnY: 600
+  spawnY: 800
   judgeY: -350
-  travelTime: 2
+  travelTime: 1.5
+  missDistance: 50
