@@ -27,6 +27,8 @@ public class LobbyMenu : MonoBehaviour
 
     public void StartSong()
     {
+        SongManager.instance.StopPreview();
+
         SceneManager.LoadScene("InGame");
     }
     

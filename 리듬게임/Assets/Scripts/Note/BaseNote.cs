@@ -1,5 +1,6 @@
-using UnityEngine;
 using System;
+using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public abstract class BaseNote : MonoBehaviour
 {
@@ -11,9 +12,20 @@ public abstract class BaseNote : MonoBehaviour
 
     protected bool judged;
 
+    protected Vector2 spawnPosition;
+    protected Vector2 judgePosition;
+
     public event Action<BaseNote> OnReturned;
 
     public NoteData Data { get; private set; }
+
+    public bool IsJudged
+    {
+        get
+        {
+            return judged;
+        }
+    }
 
     protected virtual void Awake()
     {
@@ -37,17 +49,25 @@ public abstract class BaseNote : MonoBehaviour
         gameObject.SetActive(true);
     }
 
+    public void SetMovementPosition(
+        Vector2 spawn,
+        Vector2 judge)
+    {
+        spawnPosition = spawn;
+        judgePosition = judge;
+    }
+
     public float NoteTime
     {
-        get 
+        get
         {
-         return Data.time; 
+            return Data.time;
         }
     }
 
     protected void InvokeReturned()
     {
-               OnReturned?.Invoke(this);
+        OnReturned?.Invoke(this);
     }
 
     public abstract void Move();
@@ -59,11 +79,14 @@ public abstract class BaseNote : MonoBehaviour
         if (judged)
             return;
 
-        if (musicManager.CurrentTime >Data.time + 0.200f)
+        if (musicManager.CurrentTime >
+            Data.time + 0.2f)
         {
             judged = true;
 
-            scoreManager.AddJudge(JudgeResult.Miss);
+            scoreManager.AddJudge(
+                JudgeResult.Miss
+            );
 
             ReturnPool();
         }
@@ -71,8 +94,13 @@ public abstract class BaseNote : MonoBehaviour
 
     public virtual void ReturnPool()
     {
+        InvokeReturned();
+
         gameObject.SetActive(false);
 
-        poolManager.Return(Data.type, gameObject);
+        poolManager.Return(
+            Data.type,
+            gameObject
+        );
     }
 }

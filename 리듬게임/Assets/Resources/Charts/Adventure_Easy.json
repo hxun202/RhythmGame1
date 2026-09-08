@@ -1,0 +1,41 @@
+{
+    "songName": "Adventure",
+    "bpm": 120,
+    "offset": 0,
+    "difficulty": "Easy",
+    "level": 5,
+    "notes": [
+        {
+            "time": 2.0,
+            "endTime": 0,
+            "lane": 0,
+            "targetLane": 0,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 3.0,
+            "endTime": 0,
+            "lane": 2,
+            "targetLane": 2,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 4.0,
+            "endTime": 0,
+            "lane": 4,
+            "targetLane": 4,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 5.0,
+            "endTime": 0,
+            "lane": 1,
+            "targetLane": 1,
+            "type": 0,
+            "direction": ""
+        }
+    ]
+}

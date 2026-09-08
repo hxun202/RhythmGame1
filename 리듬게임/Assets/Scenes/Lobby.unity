@@ -3462,6 +3462,7 @@ GameObject:
   - component: {fileID: 827938159}
   - component: {fileID: 827938161}
   - component: {fileID: 827938160}
+  - component: {fileID: 827938162}
   m_Layer: 5
   m_Name: Song Details Panel
   m_TagString: Untagged
@@ -3530,6 +3531,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827938158}
   m_CullTransparentMesh: 1
+--- !u!114 &827938162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 827938158}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af7d83233b4cd864280546fa88b2429e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::SongButton
+  music: {fileID: 11400000, guid: d1be6d81d3db50a4dbfc9ee0fa4a6ba9, type: 2}
+  songList: {fileID: 1073441265}
 --- !u!1 &856957196
 GameObject:
   m_ObjectHideFlags: 0
@@ -4159,7 +4174,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 039e3d058d93b6747ba8f1036057f7a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SongList
-  audioSource: {fileID: 1383548030}
   songs:
   - {fileID: 11400000, guid: d1be6d81d3db50a4dbfc9ee0fa4a6ba9, type: 2}
   - {fileID: 11400000, guid: fbace6f43fb53b34499d723e9eefcb2d, type: 2}
@@ -4169,6 +4183,8 @@ MonoBehaviour:
   songNameText: {fileID: 1101246551}
   composerText: {fileID: 765026945}
   songDetailsPanel: {fileID: 827938158}
+  songTimeStart: {fileID: 750737077}
+  songTimeEnd: {fileID: 1149484797}
 --- !u!1 &1086197401
 GameObject:
   m_ObjectHideFlags: 0
@@ -10025,6 +10041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::SongManager
   selectedSong: {fileID: 0}
   selectedDifficulty: 0
+  previewOutput: {fileID: 8546493762112701156, guid: fd398e68c3d501c4bad919bf94acb583, type: 2}
 --- !u!4 &2113987503
 Transform:
   m_ObjectHideFlags: 0

@@ -7,7 +7,34 @@ public class ChartManager : MonoBehaviour
 
     private void Awake()
     {
-        LoadChart("holdtest");
+       LoadSelectedChart();
+        // LoadChart("test");
+    }
+
+    private void LoadSelectedChart()
+    {
+        if (SongManager.instance == null)
+        {
+            Debug.LogError("SongManager가 없습니다.");
+            return;
+        }
+
+        if (SongManager.instance.selectedSong == null)
+        {
+            Debug.LogError("선택된 곡이 없습니다.");
+            return;
+        }
+
+        MusicData song =
+            SongManager.instance.selectedSong;
+
+        Difficulty difficulty =
+            SongManager.instance.selectedDifficulty;
+
+        string chartName =
+            song.songName + "_" + difficulty.ToString();
+
+        LoadChart(chartName);
     }
 
     public void LoadChart(string chartName)
@@ -54,6 +81,8 @@ public class ChartManager : MonoBehaviour
         }
 
         Debug.Log($"곡 이름 : {Chart.songName}");
+        Debug.Log($"난이도 : {Chart.difficulty}");
+        Debug.Log($"레벨 : {Chart.level}");
         Debug.Log($"노트 개수 : {Chart.notes.Count}");
     }
 }

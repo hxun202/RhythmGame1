@@ -23,7 +23,6 @@ public class JudgeManager : MonoBehaviour
     [SerializeField] private float perfectWindow = 0.050f;
     [SerializeField] private float greatWindow = 0.100f;
     [SerializeField] private float goodWindow = 0.150f;
-    [SerializeField] private float missWindow = 0.200f;
 
     private void Update()
     {
@@ -38,39 +37,41 @@ public class JudgeManager : MonoBehaviour
 
     private void TryJudge(int lane)
     {
-        BaseNote note = noteSpawner.GetClosestNote(lane);
+        BaseNote note =
+            noteSpawner.GetClosestNote(lane);
 
         if (note == null)
             return;
 
-        float difference = Mathf.Abs(
-            note.NoteTime - musicManager.CurrentTime
-        );
+        float difference =
+            Mathf.Abs(
+                note.NoteTime -
+                musicManager.CurrentTime
+            );
+
+        JudgeResult result;
 
         if (difference <= perfectWindow)
         {
-            ProcessJudge(note, JudgeResult.Perfect);
+            result = JudgeResult.Perfect;
         }
         else if (difference <= greatWindow)
         {
-            ProcessJudge(note, JudgeResult.Great);
+            result = JudgeResult.Great;
         }
         else if (difference <= goodWindow)
         {
-            ProcessJudge(note, JudgeResult.Good);
+            result = JudgeResult.Good;
         }
-        else if (difference <= missWindow)
+        else
         {
-            ProcessJudge(note, JudgeResult.Miss);
+            return;
         }
-    }
 
-    private void ProcessJudge
-        (BaseNote note,
-        JudgeResult result)
-    {
+        // 점수와 콤보는 여기서 딱 한 번
         scoreManager.AddJudge(result);
 
+        // 노트 상태만 변경
         note.Judge();
     }
 }

@@ -2,13 +2,23 @@ using UnityEngine;
 
 public class HoldNote : BaseNote
 {
-    [Header("Hold")]
-    [SerializeField] private float spawnY = 800f;
-    [SerializeField] private float judgeY = -350f;
+    [Header("Hold Parts")]
+    [SerializeField] private RectTransform head;
+    [SerializeField] private RectTransform body;
+    [SerializeField] private RectTransform tail;
+
+    [Header("Movement")]
     [SerializeField] private float travelTime = 1.5f;
+
+    [Header("Size")]
+    [SerializeField] private float headSize = 140f;
+    [SerializeField] private float tailSize = 140f;
+    [SerializeField] private float bodyWidth = 150f;
 
     private float spawnTime;
     private float endTime;
+
+    private float holdDuration;
 
     private bool holding;
     private bool judgedStart;
@@ -19,18 +29,27 @@ public class HoldNote : BaseNote
         PoolManager pool,
         ScoreManager score)
     {
-        base.Initialize(data, music, pool, score);
+        base.Initialize(
+            data,
+            music,
+            pool,
+            score
+        );
 
-        spawnTime = data.time - travelTime;
-        endTime = data.endTime;
+        spawnTime =
+            data.time - travelTime;
+
+        endTime =
+            data.endTime;
+
+        holdDuration =
+            endTime - data.time;
 
         holding = false;
         judgedStart = false;
+        judged = false;
 
-        Vector2 pos = rectTransform.anchoredPosition;
-        pos.y = spawnY;
-
-        rectTransform.anchoredPosition = pos;
+        ResetVisual();
     }
 
     private void Update()
@@ -40,17 +59,24 @@ public class HoldNote : BaseNote
 
         Move();
 
-        // 아직 홀드 시작 판정을 하지 않은 경우
+        // 아직 시작 판정을 받지 못한 상태
         if (!judgedStart)
         {
-            if (Input.GetKeyDown(GetLaneKey(Data.lane)))
-            {
-                Judge();
-            }
+            // JudgeManager가 판정하기 때문에
+            // 여기서는 입력을 검사하지 않는다.
 
-            // 판정 시간을 놓침
-            if (musicManager.CurrentTime > Data.time + 0.2f)
+            // 시작 시간을 놓쳤으면
+            // 롱노트 전체 제거
+            if (musicManager.CurrentTime >
+                Data.time + 0.2f)
             {
+                judged = true;
+                judgedStart = true;
+
+                scoreManager.AddJudge(
+                    JudgeResult.Miss
+                );
+
                 ReturnPool();
             }
 
@@ -60,46 +86,206 @@ public class HoldNote : BaseNote
         // 홀드 중
         if (holding)
         {
-            // 키를 떼면 실패
-            if (!Input.GetKey(GetLaneKey(Data.lane)))
+            if (!Input.GetKey(
+                GetLaneKey(Data.lane)))
             {
                 holding = false;
+
+                scoreManager.AddJudge(
+                    JudgeResult.Miss
+                );
+
                 ReturnPool();
+
                 return;
             }
 
-            // 홀드 끝까지 유지
+            // 끝까지 누름
             if (musicManager.CurrentTime >= endTime)
             {
                 holding = false;
 
-                // 나중에 점수 처리
+                scoreManager.AddJudge(
+                    JudgeResult.Perfect
+                );
 
                 ReturnPool();
+
+                return;
             }
         }
     }
 
     public override void Move()
     {
+        float currentTime =
+            musicManager.CurrentTime;
+
+        Vector2 headPosition =
+            GetPositionAtTime(currentTime);
+
+        float tailTime =
+            currentTime - holdDuration;
+
+        bool tailVisible =
+            tailTime >= spawnTime;
+
+        Vector2 tailPosition;
+
+        if (tailVisible)
+        {
+            tailPosition =
+                GetPositionAtTime(tailTime);
+        }
+        else
+        {
+            tailPosition =
+                spawnPosition;
+        }
+
+        // 머리가 현재 위치로 이동
+        rectTransform.anchoredPosition =
+            headPosition;
+
+        // -------------------------
+        // Head
+        // -------------------------
+        if (head != null)
+        {
+            head.anchoredPosition =
+                Vector2.zero;
+        }
+
+        // -------------------------
+        // Body
+        // -------------------------
+        if (body != null)
+        {
+            Vector2 direction =
+                tailPosition - headPosition;
+
+            float length =
+                direction.magnitude;
+
+            body.anchoredPosition =
+                direction * 0.5f;
+
+            body.sizeDelta =
+                new Vector2(
+                    bodyWidth,
+                    length
+                );
+
+            float angle =
+                Mathf.Atan2(
+                    direction.y,
+                    direction.x
+                ) * Mathf.Rad2Deg;
+
+            body.localRotation =
+                Quaternion.Euler(
+                    0f,
+                    0f,
+                    angle - 90f
+                );
+
+            body.gameObject.SetActive(
+                length > 0.1f
+            );
+        }
+
+        // -------------------------
+        // Tail
+        // -------------------------
+        if (tail != null)
+        {
+            if (tailVisible)
+            {
+                tail.gameObject.SetActive(true);
+
+                tail.anchoredPosition =
+                    tailPosition - headPosition;
+            }
+            else
+            {
+                tail.gameObject.SetActive(false);
+            }
+        }
+    }
+
+    private Vector2 GetPositionAtTime(float time)
+    {
         float progress =
-            (musicManager.CurrentTime - spawnTime) / travelTime;
+            (time - spawnTime) /
+            travelTime;
 
-        Vector2 pos = rectTransform.anchoredPosition;
+        progress =
+            Mathf.Clamp01(progress);
 
-        pos.y = Mathf.Lerp(
-            spawnY,
-            judgeY,
+        return Vector2.Lerp(
+            spawnPosition,
+            judgePosition,
             progress
         );
-
-        rectTransform.anchoredPosition = pos;
     }
 
     public override void Judge()
     {
+        if (judgedStart)
+            return;
+
         judgedStart = true;
         holding = true;
+
+        Debug.Log("Hold Start");
+    }
+
+    private void ResetVisual()
+    {
+        if (head != null)
+        {
+            head.anchoredPosition =
+                Vector2.zero;
+
+            head.localRotation =
+                Quaternion.identity;
+
+            head.sizeDelta =
+                new Vector2(
+                    headSize,
+                    headSize
+                );
+        }
+
+        if (body != null)
+        {
+            body.anchoredPosition =
+                Vector2.zero;
+
+            body.localRotation =
+                Quaternion.identity;
+
+            body.sizeDelta =
+                new Vector2(
+                    bodyWidth,
+                    0f
+                );
+        }
+
+        if (tail != null)
+        {
+            tail.anchoredPosition =
+                Vector2.zero;
+
+            tail.localRotation =
+                Quaternion.identity;
+
+            tail.sizeDelta =
+                new Vector2(
+                    tailSize,
+                    tailSize
+                );
+        }
     }
 
     private KeyCode GetLaneKey(int lane)

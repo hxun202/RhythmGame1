@@ -2,22 +2,42 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    [SerializeField] private AudioSource musicSource;
+    [SerializeField] private AudioSource inGameMusic;
 
-    public float CurrentTime => musicSource.time;
+    public float CurrentTime
+    {
+        get
+        {
+            if (inGameMusic == null)
+                return 0f;
+
+            return inGameMusic.time;
+        }
+    }
+
+    public bool IsPlaying
+    {
+        get
+        {
+            if (inGameMusic == null)
+                return false;
+
+            return inGameMusic.isPlaying;
+        }
+    }
 
     public void PlayMusic()
     {
-        musicSource.Play();
+        Debug.Log("음악은 InGameMusic에서 재생합니다.");
     }
 
     public void PauseMusic()
     {
-        musicSource.Pause();
+        Debug.Log("Pause는 나중에 연결");
     }
 
     public void StopMusic()
     {
-        musicSource.Stop();
+        Debug.Log("Stop은 나중에 연결");
     }
 }

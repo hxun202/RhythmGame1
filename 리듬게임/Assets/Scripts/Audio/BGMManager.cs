@@ -14,10 +14,9 @@ public class BGMManager : MonoBehaviour
             bgmSource.Stop();
         }
 
-        previewSource.Stop();
-
         previewSource.clip = clip;
         previewSource.Play();
+      //  DontDestroyOnLoad(previewSource);
     }
 
     void Awake()

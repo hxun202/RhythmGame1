@@ -1,0 +1,81 @@
+{
+    "songName": "Adventure",
+    "bpm": 120,
+    "offset": 0,
+    "difficulty": "Hard",
+    "level": 18,
+    "notes": [
+        {
+            "time": 2.0,
+            "endTime": 0,
+            "lane": 0,
+            "targetLane": 0,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 2.5,
+            "endTime": 0,
+            "lane": 5,
+            "targetLane": 5,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 3.0,
+            "endTime": 5.0,
+            "lane": 2,
+            "targetLane": 2,
+            "type": 1,
+            "direction": ""
+        },
+        {
+            "time": 3.5,
+            "endTime": 0,
+            "lane": 4,
+            "targetLane": 4,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 4.0,
+            "endTime": 0,
+            "lane": 1,
+            "targetLane": 1,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 4.5,
+            "endTime": 0,
+            "lane": 3,
+            "targetLane": 3,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 5.5,
+            "endTime": 0,
+            "lane": 5,
+            "targetLane": 5,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 6.0,
+            "endTime": 0,
+            "lane": 0,
+            "targetLane": 0,
+            "type": 0,
+            "direction": ""
+        },
+        {
+            "time": 6.5,
+            "endTime": 0,
+            "lane": 2,
+            "targetLane": 2,
+            "type": 0,
+            "direction": ""
+        }
+    ]
+}

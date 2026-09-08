@@ -1,5 +1,5 @@
-using UnityEngine;
 using System.Collections.Generic;
+using UnityEngine;
 
 public class NoteSpawner : MonoBehaviour
 {
@@ -8,14 +8,45 @@ public class NoteSpawner : MonoBehaviour
     [SerializeField] private MusicManager musicManager;
     [SerializeField] private PoolManager poolManager;
     [SerializeField] private ScoreManager scoreManager;
-    [SerializeField] private RectTransform NoteParent;
+
+    [Header("Note Parent")]
+    [SerializeField] private RectTransform noteParent;
 
     [Header("Lane")]
-    [SerializeField] private RectTransform[] lanes;
+    [SerializeField] private Transform[] lanes;
 
-    private readonly List<BaseNote> activeNotes = new();
+    [Header("Note Movement")]
+    [SerializeField] private float spawnY = 600f;
+    [SerializeField] private float judgeY = -230f;
+
+    [Header("Lane Spawn X")]
+    [SerializeField]
+    private float[] spawnX =
+    {
+        -80f,
+        -40f,
+        -20f,
+         20f,
+         40f,
+         80f
+    };
+
+    [Header("Lane Judge X")]
+    [SerializeField]
+    private float[] judgeX =
+    {
+        -700f,
+        -400f,
+        -130f,
+         130f,
+         400f,
+         700f
+    };
 
     private int currentIndex = 0;
+
+    private readonly List<BaseNote> activeNotes =
+        new List<BaseNote>();
 
     private void Update()
     {
@@ -24,15 +55,32 @@ public class NoteSpawner : MonoBehaviour
 
     private void SpawnNote()
     {
+        if (chartManager == null)
+            return;
+
+        if (musicManager == null)
+            return;
+
+        if (poolManager == null)
+            return;
+
+        if (scoreManager == null)
+            return;
+
+        if (!musicManager.IsPlaying)
+            return;
+
         if (chartManager.Chart == null)
             return;
 
         if (currentIndex >= chartManager.Chart.notes.Count)
             return;
 
-        NoteData data = chartManager.Chart.notes[currentIndex];
+        NoteData data =
+            chartManager.Chart.notes[currentIndex];
 
-        float spawnTime = data.time - 2f;
+        float spawnTime =
+            data.time - 1.5f;
 
         if (musicManager.CurrentTime >= spawnTime)
         {
@@ -44,50 +92,79 @@ public class NoteSpawner : MonoBehaviour
 
     private void CreateNote(NoteData data)
     {
-        GameObject obj = poolManager.Get(data.type);
+        GameObject obj =
+            poolManager.Get(data.type);
 
-        RectTransform noteRect = obj.GetComponent<RectTransform>();
+        RectTransform noteRect =
+            obj.GetComponent<RectTransform>();
 
-        noteRect.SetParent(NoteParent, false);   // Áß¿ä
-
-        noteRect.anchoredPosition = new Vector2(
-            lanes[data.lane].anchoredPosition.x,
-            600f
+        noteRect.SetParent(
+            noteParent,
+            false
         );
 
-        BaseNote note = obj.GetComponent<BaseNote>();
+        Vector2 spawnPosition =
+            new Vector2(
+                spawnX[data.lane],
+                spawnY
+            );
 
-        note.OnReturned += HandleNoteReturned;
-        note.OnReturned -= HandleNoteReturned;
+        Vector2 judgePosition =
+            new Vector2(
+                judgeX[data.lane],
+                judgeY
+            );
 
-        note.Initialize
-            (data,
+        noteRect.anchoredPosition =
+            spawnPosition;
+
+        BaseNote note =
+            obj.GetComponent<BaseNote>();
+
+        note.Initialize(
+            data,
             musicManager,
             poolManager,
-            scoreManager);
+            scoreManager
+        );
+
+        note.SetMovementPosition(
+            spawnPosition,
+            judgePosition
+        );
 
         activeNotes.Add(note);
-    }
-
-    private void HandleNoteReturned(BaseNote note)
-    {
-        activeNotes.Remove(note);
-
-        note.OnReturned -= HandleNoteReturned;
     }
 
     public BaseNote GetClosestNote(int lane)
     {
         BaseNote closest = null;
-        float closestDifference = float.MaxValue;
+
+        float closestDifference =
+            float.MaxValue;
 
         foreach (BaseNote note in activeNotes)
         {
+            if (note == null)
+                continue;
+
+            if (!note.gameObject.activeSelf)
+                continue;
+
+            if (note.Data == null)
+                continue;
+
+            if (note.IsJudged)
+                continue;
+
             if (note.Data.lane != lane)
                 continue;
 
             float difference =
-                Mathf.Abs(note.NoteTime - musicManager.CurrentTime);
+                Mathf.Abs(
+                    note.NoteTime -
+                    musicManager.CurrentTime
+                );
 
             if (difference < closestDifference)
             {
@@ -97,5 +174,13 @@ public class NoteSpawner : MonoBehaviour
         }
 
         return closest;
+    }
+
+    public void HandleNoteReturned(BaseNote note)
+    {
+        if (note == null)
+            return;
+
+        activeNotes.Remove(note);
     }
 }
