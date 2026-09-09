@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class InGameMusic : MonoBehaviour
 {
@@ -69,5 +70,14 @@ public class InGameMusic : MonoBehaviour
 
         audioSource.time = 0f;
         audioSource.Play();
+    }
+
+    public void RestartGame()
+    {
+        StopAllCoroutines();
+
+        SceneManager.LoadScene(
+            SceneManager.GetActiveScene().name
+        );
     }
 }
