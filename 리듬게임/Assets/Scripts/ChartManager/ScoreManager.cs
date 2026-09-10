@@ -17,6 +17,11 @@ public class ScoreManager : MonoBehaviour
     [Header("Judge UI")]
     [SerializeField] private float judgeDisplayTime = 0.5f;
 
+    public int PerfectCount { get; private set; }
+    public int GreatCount { get; private set; }
+    public int GoodCount { get; private set; }
+    public int MissCount { get; private set; }
+
     public int Score { get; private set; }
     public int Combo { get; private set; }
     public int MaxCombo { get; private set; }
@@ -25,15 +30,18 @@ public class ScoreManager : MonoBehaviour
 
     private void Start()
     {
-        // 게임 시작 시 초기화
         Score = 0;
         Combo = 0;
         MaxCombo = 0;
 
+        PerfectCount = 0;
+        GreatCount = 0;
+        GoodCount = 0;
+        MissCount = 0;
+
         UpdateScoreUI();
         UpdateComboUI();
 
-        // 처음에는 판정 텍스트를 아무것도 표시하지 않음
         if (judgeText != null)
         {
             judgeText.text = "";
@@ -45,21 +53,24 @@ public class ScoreManager : MonoBehaviour
         switch (result)
         {
             case JudgeResult.Perfect:
+                PerfectCount++;
                 AddScore(perfectScore);
                 ComboUp();
                 break;
 
             case JudgeResult.Great:
+                GreatCount++;
                 AddScore(greatScore);
                 ComboUp();
                 break;
 
             case JudgeResult.Good:
-                AddScore(goodScore);
+                GoodCount++;
                 ComboReset();
                 break;
 
             case JudgeResult.Miss:
+                MissCount++;
                 ComboReset();
                 break;
         }
